@@ -19,7 +19,7 @@ export default function ProductsPage() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const res = await fetch(`${BASE_URL}products/`, {
+        const res = await fetch(`${BASE_URL}/products/`, {
           credentials: "include",
         });
 
@@ -53,7 +53,7 @@ export default function ProductsPage() {
               <h2 className="text-xl font-semibold text-black">
                 {product.name}
               </h2>
-              <img src={`http://localhost:8000${product.image}`} alt="" />
+              <img src={`${BASE_URL}${product.image}`} alt="" />
               <p className="text-gray-700 mt-2">{product.description}</p>
               <p className="mt-4 font-bold text-black">${product.price}</p>
             </div>

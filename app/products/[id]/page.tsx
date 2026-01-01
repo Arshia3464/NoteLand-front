@@ -8,6 +8,7 @@ interface Product {
   name: string;
   price: number;
   description: string;
+  image: string;
 }
 
 export default function ProductPage() {
@@ -83,18 +84,44 @@ export default function ProductPage() {
   if (!product) return null;
 
   return (
-    <div className="min-h-screen bg-gray-100 p-8">
-      <h1 className="text-3xl font-bold text-black">{product.name}</h1>
+    <div className="min-h-screen bg-[#131C30] text-white p-8">
+      <div className="w-full flex ">
+        <div className="w-1/2">
+          {/* IMAGE AND GALLERY */}
+          <img src={`${BASE_URL}${product.image}`} alt="" />
+        </div>
+        <div className="w-1/2">
+          <h1 className="text-3xl font-bold text-left ">{product.name}</h1>
+          <h1 className="text-3xl font-bold text-left ">
+            {product.name} English here
+          </h1>
+          <div className="w-full h-px bg-white m-4"></div>
 
-      <p className="mt-4 text-gray-700">{product.description}</p>
+          <div className="w-full flex h-75 text-2xl font-bold ">
+            <div className="w-1/3 h-full text-center">تعداد</div>
+            <div className="w-1/3 h-full text-center">غلظت</div>
+            <div className="w-1/3 h-full text-center">حجم</div>
+          </div>
 
-      <p className="mt-6 text-2xl font-bold text-black">${product.price}</p>
-      <button
-        className="bg-green-800 cursor-pointer rounded-xl p-4"
-        onClick={() => handleAddItem(product)}
-      >
-        Add to Cart
-      </button>
+          <p className="mt-4 ">{product.description}</p>
+
+          <p className="mt-6 text-2xl font-bold ">${product.price}</p>
+          <div className="flex">
+            {/* RATING */}
+            <img src="/Star.png" className="siz-6 p-4 pr-0" alt="" />
+            <img src="/Star.png" className="siz-6 p-4 pr-0" alt="" />
+            <img src="/Star.png" className="siz-6 p-4 pr-0" alt="" />
+            <img src="/Star.png" className="siz-6 p-4 pr-0" alt="" />
+            <img src="/Star.png" className="siz-6 p-4 pr-0" alt="" />
+          </div>
+          <button
+            className="bg-white cursor-pointer rounded-xl p-4 text-[#131C30] text-2xl px-4 py-2"
+            onClick={() => handleAddItem(product)}
+          >
+            افزودن به سبد خرید
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
